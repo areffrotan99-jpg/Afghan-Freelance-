@@ -1,0 +1,201 @@
+import { FreelancerProfile } from '../types';
+
+export const FREELANCERS: FreelancerProfile[] = [
+  {
+    id: 'fl-1',
+    name: 'احمد ولی فایز',
+    username: 'ahmad_faiz_dev',
+    email: 'ahmad.faiz@example.af',
+    role: 'freelancer',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80',
+    headline: 'Senior Full-Stack & AI Developer | React, Node.js & Python',
+    bio: 'با بیش از ۷ سال تجربه در توسعه نرم‌افزارهای تجاری بین‌المللی و ادغام مدل‌های هوش مصنوعی. متخصص در ساخت برنامه‌های وب مقیاس‌پذیر، سیستم‌های پرداخت HesabPay و معماری Cloud.',
+    hourlyRateAFN: 1800,
+    hourlyRateUSD: 25,
+    skills: ['React', 'Next.js', 'TypeScript', 'Node.js', 'Python', 'HesabPay', 'PostgreSQL', 'Docker'],
+    languages: ['دری (مادری)', 'پشتو (مسلط)', 'English (Fluent)'],
+    rating: 4.98,
+    reviewCount: 94,
+    completedOrders: 118,
+    responseTime: 'کمتر از ۱ ساعت',
+    availability: 'available',
+    badges: ['Verified', 'Top Rated', 'Professional', 'Fast Responder'],
+    isVerified: true,
+    isSuspended: false,
+    createdAt: '2023-01-15',
+    location: { city: 'کابل', country: 'افغانستان' },
+    portfolio: [
+      {
+        id: 'pf-1',
+        title: 'سامانه یکپارچه صادرات زعفران و خشکبار هرات',
+        category: 'وبسایت و تجارت الکترونیک',
+        image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80',
+        description: 'طراحی و پیاده‌سازی فروشگاه آنلاین با درگاه HesabPay و امکان سفارش بین‌المللی.'
+      },
+      {
+        id: 'pf-2',
+        title: 'اپلیکیشن آموزش زبان پشتو و دری برای کودکان',
+        category: 'موبایل و هوش مصنوعی',
+        image: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=600&q=80',
+        description: 'توسعه اپلیکیشن تعاملی کراس‌پلتفرم با سیستم تشخیص گفتار صوتی.'
+      }
+    ]
+  },
+  {
+    id: 'fl-2',
+    name: 'مریم سادات نیازی',
+    username: 'maryam_niazi_design',
+    email: 'maryam.niazi@example.af',
+    role: 'freelancer',
+    avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80',
+    headline: 'Creative Brand Identity & UI/UX Designer',
+    bio: 'طراح ارشد هویت بصری و رابط کاربری وب و اپلیکیشن. تلفیق هنر اصیل و نقوش هندسی زیبای افغانستان با اصول مدرن طراحی مینیمال بین‌المللی. طراح بیش از ۶۰ برند معتبر.',
+    hourlyRateAFN: 1500,
+    hourlyRateUSD: 22,
+    skills: ['Figma', 'UI/UX Design', 'Brand Identity', 'Adobe Illustrator', 'Typography', 'Logo Design'],
+    languages: ['دری (مادری)', 'English (Professional)'],
+    rating: 4.95,
+    reviewCount: 76,
+    completedOrders: 92,
+    responseTime: 'کمتر از ۲ ساعت',
+    availability: 'available',
+    badges: ['Verified', 'Top Rated', 'Professional'],
+    isVerified: true,
+    isSuspended: false,
+    createdAt: '2023-03-20',
+    location: { city: 'هرات', country: 'افغانستان' },
+    portfolio: [
+      {
+        id: 'pf-3',
+        title: 'برندینگ و هویت بصری صنایع دستی لعل بدخشان',
+        category: 'طراحی لوگو و برندینگ',
+        image: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=600&q=80',
+        description: 'طراحی ست اداری، بسته‌بندی صادراتی و راهنمای جامع برند.'
+      }
+    ]
+  },
+  {
+    id: 'fl-3',
+    name: 'عبدالرحمان شینواری',
+    username: 'shinwari_translator',
+    email: 'shinwari.trans@example.af',
+    role: 'freelancer',
+    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80',
+    headline: 'Official Certified Translator | Pashto, Dari & English',
+    bio: 'مترجم رسمی سازمان‌های بین‌المللی و کارشناس ارشد زبان‌شناسی. سابقه ترجمه بیش از ۵۰۰ هزار کلمه متون حقوقی، اقتصادی، پزشکی و دانشگاهی با نهایت دقت و امانت‌داری.',
+    hourlyRateAFN: 1200,
+    hourlyRateUSD: 18,
+    skills: ['Pashto Translation', 'Dari Translation', 'English Translation', 'Legal Editing', 'Subtitling', 'Localization'],
+    languages: ['پښتو (مورنۍ ژبه)', 'دری (مادری)', 'English (Native/C2)', 'العربية (جيد)'],
+    rating: 5.0,
+    reviewCount: 120,
+    completedOrders: 154,
+    responseTime: 'کمتر از ۳۰ دقیقه',
+    availability: 'available',
+    badges: ['Verified', 'Top Rated', 'Fast Responder', 'Professional'],
+    isVerified: true,
+    isSuspended: false,
+    createdAt: '2022-11-10',
+    location: { city: 'جلال‌آباد / ننگرهار', country: 'افغانستان' },
+    portfolio: [
+      {
+        id: 'pf-4',
+        title: 'ترجمه اسناد حقوقی و گزارش سالانه توسعه سازمان ملل',
+        category: 'ترجمه رسمی',
+        image: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=600&q=80',
+        description: 'ترجمه دقیق و اصولی بیش از ۱۲۰ صفحه متن تخصصی از انگلیسی به پشتو و دری.'
+      }
+    ]
+  },
+  {
+    id: 'fl-4',
+    name: 'جمشید حیدری',
+    username: 'jamshid_motion',
+    email: 'jamshid.video@example.af',
+    role: 'freelancer',
+    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80',
+    headline: 'Motion Graphics Designer & Video Producer',
+    bio: 'تدوینگر و طراح موشن‌گرافیک با ۶ سال سابقه در تلویزیون‌های ملی و ساخت ویدیوهای تبلیغاتی شبکه‌های اجتماعی برای برندهای تجاری افغانستان و امارات.',
+    hourlyRateAFN: 1600,
+    hourlyRateUSD: 24,
+    skills: ['After Effects', 'Premiere Pro', 'Motion Design', 'Color Grading', '3D Animation', 'Sound Design'],
+    languages: ['دری', 'English'],
+    rating: 4.92,
+    reviewCount: 52,
+    completedOrders: 68,
+    responseTime: 'کمتر از ۳ ساعت',
+    availability: 'available',
+    badges: ['Verified', 'Top Rated', 'Professional'],
+    isVerified: true,
+    isSuspended: false,
+    createdAt: '2023-05-12',
+    location: { city: 'مزار شریف / بلخ', country: 'افغانستان' },
+    portfolio: [
+      {
+        id: 'pf-5',
+        title: 'تیزر معرفی خدمات پرداخت آنلاین HesabPay',
+        category: 'تدوین و انیمیشن',
+        image: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=600&q=80',
+        description: 'ساخت تیزر جذاب تبلیغاتی ۲ بعدی با سناریوی فارسی و پشتو.'
+      }
+    ]
+  },
+  {
+    id: 'fl-5',
+    name: 'فاطمه رضایی',
+    username: 'fatima_ai_engineer',
+    email: 'fatima.reza@example.af',
+    role: 'freelancer',
+    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80',
+    headline: 'AI & Data Specialist | Gemini, LLM Fine-Tuning & Python',
+    bio: 'مهندس هوش مصنوعی و فارغ‌التحصیل ممتاز دانشگاه کابل. توسعه‌دهنده سیستم‌های پردازش زبان طبیعی (NLP) برای زبان‌های دری و پشتو و ساخت سیستم‌های هوشمند گفتاری.',
+    hourlyRateAFN: 2200,
+    hourlyRateUSD: 30,
+    skills: ['Python', 'Gemini API', 'PyTorch', 'LangChain', 'Data Analytics', 'NLP Pashto/Dari', 'FastAPI'],
+    languages: ['دری (مادری)', 'English (Fluent)', 'پشتو'],
+    rating: 4.97,
+    reviewCount: 41,
+    completedOrders: 49,
+    responseTime: 'کمتر از ۱ ساعت',
+    availability: 'available',
+    badges: ['Verified', 'Top Rated', 'Professional', 'Fast Responder'],
+    isVerified: true,
+    isSuspended: false,
+    createdAt: '2023-08-01',
+    location: { city: 'کابل', country: 'افغانستان' },
+    portfolio: [
+      {
+        id: 'pf-6',
+        title: 'بات هوشمند پشتیبانی ۲۴ ساعته به زبان‌های پشتو و دری',
+        category: 'هوش مصنوعی',
+        image: 'https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&w=600&q=80',
+        description: 'ادغام Gemini با دیتابیس محصولات برای پاسخگویی آنی مشتریان افغان.'
+      }
+    ]
+  },
+  {
+    id: 'fl-6',
+    name: 'بلال احمد کاکر',
+    username: 'bilal_kakar_seo',
+    email: 'bilal.kakar@example.af',
+    role: 'freelancer',
+    avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&q=80',
+    headline: 'SEO Consultant & Digital Growth Marketer',
+    bio: 'متخصص رشد دیجیتال، استراتژی سئو و تبلیغات آنلاین. کمک به کسب‌وکارهای افغان برای ورود به نتایج صفحه اول گوگل و افزایش ترافیک فروشگاه‌های آنلاین.',
+    hourlyRateAFN: 1400,
+    hourlyRateUSD: 20,
+    skills: ['SEO', 'Google Analytics', 'Social Media Ads', 'Content Strategy', 'Keyword Research'],
+    languages: ['پښتو', 'دری', 'English'],
+    rating: 4.89,
+    reviewCount: 38,
+    completedOrders: 47,
+    responseTime: 'کمتر از ۲ ساعت',
+    availability: 'available',
+    badges: ['Verified', 'Professional'],
+    isVerified: true,
+    isSuspended: false,
+    createdAt: '2023-09-14',
+    location: { city: 'قندهار', country: 'افغانستان' },
+    portfolio: []
+  }
+];
