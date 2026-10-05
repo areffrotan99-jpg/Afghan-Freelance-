@@ -1,0 +1,23 @@
+services:
+  app:
+    image: node:22-slim
+    working_dir: /app
+    volumes:
+      - ./:/app
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - APP_URL=https://3000-${BASE44_PUBLIC_HOST_SUFFIX}
+      # Let Vite accept the preview's external hostname for HMR/dev assets
+      - __VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS
+    env_file:
+      - /run/base44/app.env
+    command: ["sh", "-ec", "npm install --legacy-peer-deps && exec npm run dev"]
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://localhost:3000/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+      start_period: 40s
+    restart: on-failure

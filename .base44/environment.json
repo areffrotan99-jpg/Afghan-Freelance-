@@ -1,0 +1,37 @@
+{
+  "previewPort": 3000,
+  "healthPath": "/api/health",
+  "startCommand": "docker compose -f docker-compose.base44.yml up -d",
+  "secrets": [
+    {
+      "name": "GEMINI_API_KEY",
+      "description": "Google Gemini API key from Google AI Studio (https://aistudio.google.com/apikey). Not required to boot — the app does not currently import it, but it is listed in .env.example for future AI features.",
+      "requiredAtBoot": false
+    },
+    {
+      "name": "HESABPAY_API_KEY",
+      "description": "HesabPay payment gateway API key from the HesabPay dashboard. Optional — the app runs in demo/sandbox mode without it.",
+      "requiredAtBoot": false
+    },
+    {
+      "name": "HESABPAY_WEBHOOK_SECRET",
+      "description": "HesabPay webhook signing secret for verifying payment callbacks. Optional.",
+      "requiredAtBoot": false
+    },
+    {
+      "name": "FIREBASE_PROJECT_ID",
+      "description": "Firebase project ID for cloud persistence and auth. Optional — the app uses in-memory state without it.",
+      "requiredAtBoot": false
+    },
+    {
+      "name": "FIREBASE_CLIENT_EMAIL",
+      "description": "Firebase service account client email. Optional.",
+      "requiredAtBoot": false
+    },
+    {
+      "name": "FIREBASE_PRIVATE_KEY",
+      "description": "Firebase service account private key. Optional.",
+      "requiredAtBoot": false
+    }
+  ]
+}
