@@ -1,168 +1,90 @@
-import React, { useState, useEffect } from 'react';
-import { LanguageProvider, useLanguage } from './context/LanguageContext';
-import { CurrencyProvider } from './context/CurrencyContext';
-import { ThemeProvider } from './context/ThemeContext';
-import { AuthProvider, useAuth } from './context/AuthContext';
-import { MarketplaceProvider, useMarketplace } from './context/MarketplaceContext';
+import { AuthProvider, useAuth } from './lib/session';
+import { usePath } from './lib/router';
+import { Toaster } from './lib/toast';
+import { Layout } from './components/Layout';
+import { navigate } from './lib/router';
+import { Login } from './pages/Login';
+import { Dashboard } from './pages/Dashboard';
+import { SalesPage } from './pages/Sales';
+import { PurchasesPage } from './pages/Purchases';
+import { ExpensesPage } from './pages/Expenses';
+import { CashboxPage } from './pages/Cashbox';
+import { PartiesPage } from './pages/Parties';
+import { ProductsPage } from './pages/Products';
+import { LedgerPage } from './pages/Ledger';
+import { ReportsPage } from './pages/Reports';
+import { SettingsPage } from './pages/Settings';
+import { GuidePage } from './pages/Guide';
 
-import { Header } from './components/Header';
-import { Footer } from './components/Footer';
-import { HesabPayModal } from './components/HesabPayModal';
-import { ChatModal } from './components/ChatModal';
-import { OfflineBanner } from './components/OfflineBanner';
-
-// Pages
-import { Home } from './pages/Home';
-import { Services } from './pages/Services';
-import { Freelancers } from './pages/Freelancers';
-import { Projects } from './pages/Projects';
-import { Categories } from './pages/Categories';
-import { HowItWorks } from './pages/HowItWorks';
-import { ClientDashboard } from './pages/ClientDashboard';
-import { FreelancerDashboard } from './pages/FreelancerDashboard';
-import { AdminDashboard } from './pages/AdminDashboard';
-import { WalletPage } from './pages/WalletPage';
-import { SystemStatus } from './pages/SystemStatus';
-
-import { Service, FreelancerProfile, Project } from './types';
-
-const MainAppContent: React.FC = () => {
-  const { dir } = useLanguage();
-  const { role } = useAuth();
-  const { placeOrder } = useMarketplace();
-
-  // Navigation tab state
-  const [currentTab, setCurrentTab] = useState<string>('home');
-  const [searchQuery, setSearchQuery] = useState<string>('');
-  const [selectedCategorySlug, setSelectedCategorySlug] = useState<string>('');
-
-  // Active Chat State
-  const [chatRecipient, setChatRecipient] = useState<{ id: string; name: string } | null>(null);
-
-  // Service ordering from home/cards
-  const handleSelectService = (service: Service) => {
-    setCurrentTab('services');
-  };
-
-  const handleSelectFreelancer = (freelancer: FreelancerProfile) => {
-    setCurrentTab('freelancers');
-  };
-
-  const handleSelectProject = (project: Project) => {
-    setCurrentTab('projects');
-  };
-
-  const handleOpenChatWithFreelancer = (freelancer: FreelancerProfile) => {
-    setChatRecipient({ id: freelancer.id, name: freelancer.name });
-  };
-
-  const handleOpenChatWithPerson = (id: string, name: string) => {
-    setChatRecipient({ id, name });
-  };
-
-  const handleCategoryNav = (categoryId: string) => {
-    setSelectedCategorySlug(categoryId);
-    setCurrentTab('services');
-  };
-
+function NotFound() {
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans selection:bg-blue-600 selection:text-white" dir={dir}>
-      <OfflineBanner />
-
-      {/* Header */}
-      <Header
-        currentTab={currentTab}
-        setCurrentTab={setCurrentTab}
-        onOpenSearch={(query) => {
-          setSearchQuery(query);
-          setCurrentTab('services');
-        }}
-      />
-
-      {/* Main Body Router */}
-      <main className="flex-1">
-        {currentTab === 'home' && (
-          <Home
-            setCurrentTab={setCurrentTab}
-            onSelectService={handleSelectService}
-            onSelectFreelancer={handleSelectFreelancer}
-            onSelectProject={handleSelectProject}
-            onOpenChatWith={handleOpenChatWithFreelancer}
-            onSubmitProposal={() => setCurrentTab('projects')}
-          />
-        )}
-
-        {currentTab === 'services' && (
-          <Services
-            initialSearchQuery={searchQuery}
-            selectedCategorySlug={selectedCategorySlug}
-            onOpenChatWithSeller={(id, name) => handleOpenChatWithPerson(id, name)}
-          />
-        )}
-
-        {currentTab === 'freelancers' && (
-          <Freelancers onOpenChatWith={handleOpenChatWithFreelancer} />
-        )}
-
-        {currentTab === 'projects' && <Projects />}
-
-        {currentTab === 'categories' && (
-          <Categories onSelectCategory={handleCategoryNav} />
-        )}
-
-        {currentTab === 'how-it-works' && <HowItWorks />}
-
-        {currentTab === 'dashboard-client' && (
-          <ClientDashboard
-            onOpenChat={handleOpenChatWithPerson}
-            onPostNewProject={() => setCurrentTab('projects')}
-          />
-        )}
-
-        {currentTab === 'dashboard-freelancer' && (
-          <FreelancerDashboard
-            onOpenWallet={() => setCurrentTab('wallet')}
-            onOpenChat={handleOpenChatWithPerson}
-          />
-        )}
-
-        {currentTab === 'admin' && <AdminDashboard />}
-
-        {currentTab === 'wallet' && <WalletPage />}
-
-        {currentTab === 'system-status' && <SystemStatus />}
-      </main>
-
-      {/* Global HesabPay Checkout Modal */}
-      <HesabPayModal />
-
-      {/* Live Chat Modal */}
-      {chatRecipient && (
-        <ChatModal
-          recipientId={chatRecipient.id}
-          recipientName={chatRecipient.name}
-          onClose={() => setChatRecipient(null)}
-        />
-      )}
-
-      {/* Footer */}
-      <Footer setCurrentTab={setCurrentTab} />
+    <div className="card card-pad mx-auto mt-10 max-w-md text-center">
+      <p className="text-base font-bold text-slate-800">صفحه مورد نظر پیدا نشد</p>
+      <p className="mt-1 text-sm text-slate-500">آدرس وارد شده در برنامه وجود ندارد.</p>
+      <button className="btn-primary mt-4" onClick={() => navigate('/')}>
+        بازگشت به داشبورد
+      </button>
     </div>
   );
-};
+}
+
+function Routes() {
+  const path = usePath();
+  switch (path) {
+    case '/':
+      return <Dashboard />;
+    case '/sales':
+      return <SalesPage />;
+    case '/purchases':
+      return <PurchasesPage />;
+    case '/expenses':
+      return <ExpensesPage />;
+    case '/cashbox':
+      return <CashboxPage />;
+    case '/customers':
+      return <PartiesPage type="customer" />;
+    case '/companies':
+      return <PartiesPage type="company" />;
+    case '/products':
+      return <ProductsPage />;
+    case '/ledger':
+      return <LedgerPage />;
+    case '/reports':
+      return <ReportsPage />;
+    case '/settings':
+      return <SettingsPage />;
+    case '/guide':
+      return <GuidePage />;
+    default:
+      return <NotFound />;
+  }
+}
+
+function Shell() {
+  const { user, ready } = useAuth();
+  if (!ready) {
+    return (
+      <div className="grid min-h-screen place-items-center bg-slate-100">
+        <div className="flex flex-col items-center gap-3">
+          <span className="h-8 w-8 animate-spin rounded-full border-3 border-emerald-600 border-t-transparent" />
+          <p className="text-sm font-semibold text-slate-600">فروتن درملتون</p>
+        </div>
+      </div>
+    );
+  }
+  if (!user) return <Login />;
+  return (
+    <Layout>
+      <Routes />
+    </Layout>
+  );
+}
 
 export default function App() {
   return (
-    <ThemeProvider>
-      <LanguageProvider>
-        <CurrencyProvider>
-          <AuthProvider>
-            <MarketplaceProvider>
-              <MainAppContent />
-            </MarketplaceProvider>
-          </AuthProvider>
-        </CurrencyProvider>
-      </LanguageProvider>
-    </ThemeProvider>
+    <AuthProvider>
+      <Shell />
+      <Toaster />
+    </AuthProvider>
   );
 }

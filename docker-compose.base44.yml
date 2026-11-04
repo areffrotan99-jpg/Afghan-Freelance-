@@ -4,20 +4,29 @@ services:
     working_dir: /app
     volumes:
       - ./:/app
+      # داده‌های حسابداری خارج از سورس نگهداری می‌شود (پایدار بین ری‌استارت‌ها)
+      - frotan-data:/data
     ports:
       - "3000:3000"
     environment:
       - NODE_ENV=development
+      - DATA_DIR=/data
       - APP_URL=https://3000-${BASE44_PUBLIC_HOST_SUFFIX}
-      # Let Vite accept the preview's external hostname for HMR/dev assets
+      # میزبان عمومی پیش‌نمایش برای Vite/HMR
       - __VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS
+      - BASE44_PREVIEW_MODE
     env_file:
-      - /run/base44/app.env
-    command: ["sh", "-ec", "npm install --legacy-peer-deps && exec npm run dev"]
+      # متغیرهای محیطی مدیریت‌شده (در صورت وجود) — آخرین لایه، همیشه اولویت دارد
+      - path: /run/base44/app.env
+        required: false
+    command: ["sh", "-ec", "npm install --legacy-peer-deps --no-audit --no-fund && exec npm run dev"]
     healthcheck:
       test: ["CMD", "node", "-e", "fetch('http://localhost:3000/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
       interval: 10s
       timeout: 5s
       retries: 6
-      start_period: 40s
+      start_period: 60s
     restart: on-failure
+
+volumes:
+  frotan-data:

@@ -1,5 +1,5 @@
 {
-  "name": "react-example",
+  "name": "frotan-pharmacy",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -33,5 +33,6 @@
     "tsx": "^4.21.0",
     "typescript": "^7.0.2",
     "@types/express": "^4.17.21"
-  }
+  },
+  "description": "فروتن درملتون — سیستم کامل حسابداری داروخانه (فارسی/دری، افغانی، آفلاین)"
 }
